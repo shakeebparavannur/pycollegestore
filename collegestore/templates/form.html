@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #0c0c0c;
+        background-color: #1e4daf;
+        overflow-x: hidden;
+      }
+      .col-form-label{
+        width: 100px;
+        color: #555;
+        font-size: 15px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="nav-head" style="margin-top: 10px">
+      <header
+        class="shadow text-white"
+        style="
+          background-color: rgb(10, 10, 10);
+          padding-right: 15px;
+          margin: 0;
+          height: 70px;
+        "
+      >
+        <div class="row mb-5" style="text-transform: uppercase">
+          <div class="col-md-6 col-9 p-3 ps-5">
+            <h2 style="font-family: 'Roboto', sans-serif; margin-top: 6px">
+              <a
+                class="nav-link"
+                style="font-size: 24px; font-weight: 700; color: #ffffff"
+                href="/"
+              >
+                SIGMA INSTITUTE
+              </a>
+            </h2>
+          </div>
+          <div class="col-md-6 col-3 my-auto">
+            <nav class="navbar navbar-expand-lg">
+              <div class="container-fluid">
+                <button
+                  class="navbar-toggler ms-auto"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div
+                  class="collapse navbar-collapse"
+                  id="navbarSupportedContent"
+                >
+                  <div
+                    class="d-flex mx-auto flex-column flex-lg-row align-items-center"
+                  >
+                    <ul
+                      class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto text-center"
+                    >
+                      <li class="nav-item p-3">
+                        <a class="nav-link text-white" aria-current="page" href="/">HOME</a>
+                      </li>
+                      <li class="nav-item p-3">
+                        <a class="nav-link text-white" href="/#about">ABOUT</a>
+                      </li>
+                      <li class="nav-item p-3">
+                        <a class="nav-link text-white" href="cred/logout">Logout</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+    </section>
+    <section class="form-section ">
+        <div class="card border-info rounded shadow col-md-6 text-center mx-auto" style="margin-top: 20px;">
+            <div class="card-body" style="background-color: #bdceca7b;">
+                <div class="card-header mx-auto" style="background-color: #0c0c0c;">
+                    <h3 class="text-white mt-3" style="font-size: 24px; font-weight: 700; color: #ffffff">STUDENT FORM </h3>
+                </div>
+                <div class="form mt-4">
+                    <form method="post" onsubmit="submitAlert()">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                          <label for="name" class="col-sm-2 col-form-label">Name</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="name" name="name" required>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                          <label for="dob" class="col-sm-2 col-form-label">DOB</label>
+                          <div class="col-sm-6">
+                            <input onchange="calAge()" type="date" class="form-control" id="dob" name="dob" required>
+                          </div>
+                          <label for="age" class="col-sm-2 col-form-label" >Age</label>
+                          <div class="col-sm-2">
+                            <input type="number" class="form-control" id="age" name="age" readonly required>
+                          </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="name" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                              <input type="email" class="form-control name" id="email" name="email" required>
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+                                <div class="col-sm-4">
+                                    <input type="radio" name="gender" value="male" required>
+                                    <label for="male" class="form-check-label" >Male</label>
+                                    <input type="radio" name="gender" value="female" required>
+                                    <label for="female" class="form-check-label" >Female</label>
+                                    <input type="radio" name="gender" value="others" required>
+                                    <label for="others" class="form-check-label" >Others</label>
+                                </div>
+                                
+                            </div>
+                            <div class="row mb-3">
+                                <label for="number" class="col-sm-2 col-form-label">Ph No</label>
+                                <div class="col-sm-10">
+                                  <input type="tel" class="form-control name" id="number" name="phone" required>
+                                </div>
+                              </div>
+                              <div class="row mb-3">
+                                <label for="number" class="col-sm-2 col-form-label">Address</label>
+                                <div class="col-sm-10">
+                                  <textarea name="address" class="form-control" required></textarea>
+                                </div>
+                              </div>
+                              <div class="row mb-3">
+                                <label for="department" class="col-sm-2 col-form-label">Department</label>
+                                <div class="col-sm-4">
+                                  <select name="department" class="form-select" id="department" onchange="courseSelect()" required>
+                                    <option disabled="disabled" selected="selected">Select Department</option>
+                                    <option value="B.Com">B.Com</option>
+                                    <option value="BBA">BBA</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Arts">Arts</option>
+                                    <option value="Biology">Biology</option>
+                                  </select>
+                                </div>
+                                <label for="course" class="col-sm-2 col-form-label">Course</label>
+                                <div class="col-sm-4">
+                                  <select name="course" class="form-select" id="course" required>
+                                    <option disabled="disabled" selected="selected">Select Course</option>
+                                    <!-- <option value="B.Com CA">B.Com CA</option>
+                                    <option value="B.Com IF">B.Com IF</option>
+                                    <option value="B.Com Finance">B.Com Finance</option>
+                                    <option value="BBA">BBA</option>
+                                    <option value="MBA">MBA</option>
+                                    <option value="BCA">BCA</option>
+                                    <option value="BCA">Bsc Computer Science</option>
+                                    <option value="BA Sociolgy">BA Sociolgy</option>
+                                    <option value="BA Functional ">BA Functional English</option>
+                                    <option value="BSc Zoology">BSc Zoology</option>
+                                    <option value="BSc Zoology">BSc Botany</option>
+                                    <option value="BSc Zoology">BSc Microbiology</option> -->
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="row mb-3">
+                                <label for="purpose" class="col-sm-2 col-form-label">Purpose</label>
+                                <div class="col-sm-8">
+                                  <select name="purpose" class="form-select" required>
+                                    <option value="enquiry">Enquiry</option>
+                                    <option value="place order">Place Order</option>
+                                    <option value="Return">Return</option>
+                                  </select>
+                                </div>
+                                </div>
+                                    <div class="row mb-3">
+                                        <label for="materials" class="col-sm-2 col-form-label">Materials</label>
+                                        <div class="col-sm-5">
+                                          <input type="checkbox" class="form-check-input" id="notebook" name="materials[]" value="notebook">Note Book
+                                          <input type="checkbox" class="form-check-input" id="pen" name="materials[]" value="pen" >Pen
+                                          <input type="checkbox" class="form-check-input" id="exampaper" name="materials[]" value="exampaper">Exam Paper
+                                        </div>
+                                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                        <a  class="btn btn-primary" href="cred/logout">logout</a>
+                      </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+         function calAge(){
+            var userDate = document.getElementById('dob').value;
+
+            var dob = new Date(userDate);
+
+            var month_diff = Date.now() - dob.getTime();
+
+            var age_dt = new Date(month_diff);
+            var year = age_dt.getUTCFullYear();
+            
+            var age =Math.abs(year - 1970);
+
+            console.log(age)
+            document.getElementById('age').value = age;
+        };
+    </script>
+    <script>
+        function courseSelect(){
+            var departmentSel = document.getElementById('department')
+            var courseSel = document.getElementById('course')
+            courseSel.innerHTML = "";
+             
+            if (departmentSel.value ==="B.Com"){
+                courseSel.innerHTML = "<option value='B.Com CA'>B.Com CA</option><option value='B.Com IF'>B.Com IF</option><option value='B.Com Finance'>B.Com Finance</option>"
+            }
+            else if (departmentSel.value === "BBA"){
+                courseSel.innerHTML = "<option value='BBA'>BBA</option><option value='MBA'>MBA</option>"
+            }
+            else if (departmentSel.value === "Computer Science"){
+                courseSel.innerHTML = "<option value='BCA'>BCA</option><option value='BSc Computer Science'>Bsc Computer Science</option>"
+            }
+            else if (departmentSel.value === "Arts"){
+                courseSel.innerHTML = "<option value='BA Sociolgy'>BA Sociolgy</option><option value='BA Functional English'>BA Functional English</option>"
+            }
+            else if (departmentSel.value === "Biology"){
+                courseSel.innerHTML = "<option value='BSc Zoology'>BSc Zoology</option><option value='BSc Botany'>BSc Botany</option><option value='BSc Microbilogy'>BSc Microbiology</option>"
+            }
+        }
+        function submitAlert(){
+            alert("Your order has been placed")
+        }
+    </script>
+  </body>
+</html>
